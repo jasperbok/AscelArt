@@ -7,8 +7,15 @@ var Artwork = require('./art/artwork');
 
 configure(process);
 
-var contents = fs.readFileSync(settings.inFile, {encoding: 'utf-8'});
+// Check whether the input file exists and read it if it does.
+if (fs.existsSync(settings.inFile) && fs.lstatSync(settings.inFile).isFile()) {
+  var contents = fs.readFileSync(settings.inFile, {encoding: 'utf-8'});
+  var art = new Artwork(contents, 5);
 
-var art = new Artwork(contents, 20);
-art.draw();
-art.write(settings.outFile);
+  art.draw();
+  art.write(settings.outFile);
+}
+else {
+  console.error("The given input file does not exist or isn't a file.");
+  process.exit(1);
+}
