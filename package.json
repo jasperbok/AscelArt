@@ -16,5 +16,8 @@
     "conversion"
   ],
   "author": "Jasper Bok",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "canvas": "^1.2.3"
+  }
 }
