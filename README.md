@@ -13,4 +13,4 @@ AscelArt requires
 
 ## Usage
 
-ascelart -i <input file> -o <output file> [-s <scale>]
+ascelart -i \<input file\> -o \<output file\> [-s \<scale\>]
