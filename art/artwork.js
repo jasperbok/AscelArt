@@ -7,6 +7,11 @@ var colors = require('./colors');
 function Artwork(text, scale) {
   this.source = text;
   this.lines = text.split('\n');
+
+  if (!this.lines[this.lines.length -1]) {
+    this.lines = this.lines.slice(0, this.lines.length - 1);
+  }
+
   this.width = this.getWidth();
   this.height = this.getHeight();
   this.scale = scale | 1;
@@ -25,7 +30,7 @@ Artwork.prototype.getWidth = function getWidth() {
 };
 
 Artwork.prototype.getHeight = function getHeight() {
-  return this.lines.length - 1;
+  return this.lines.length;
 };
 
 Artwork.prototype.draw = function draw() {
@@ -36,7 +41,6 @@ Artwork.prototype.draw = function draw() {
 
     lineParts.forEach(function(col, j) {
       self.ctx.fillStyle = colors.hasOwnProperty(col) ? colors[col] : colors.default;
-      console.log(self.ctx.fillStyle);
       self.ctx.fillRect(j * self.scale, i * self.scale, self.scale, self.scale);
     });
 
