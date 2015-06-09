@@ -1,10 +1,10 @@
 var fs = require('fs');
-
 var Canvas = require('canvas');
+var settings = require('../config/settings');
 
 var colors = require('./colors');
 
-function Artwork(text, scale) {
+function Artwork(text) {
   this.source = text;
   this.lines = text.split('\n');
 
@@ -14,7 +14,7 @@ function Artwork(text, scale) {
 
   this.width = this.getWidth();
   this.height = this.getHeight();
-  this.scale = scale | 1;
+  this.scale = settings.scale;
   this.canvas = new Canvas(this.width * this.scale, this.height * this.scale);
   this.ctx = this.canvas.getContext('2d');
 }

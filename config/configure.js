@@ -3,13 +3,12 @@ var minimist = require('minimist');
 var settings = require('./settings');
 
 var minimistOptions = {
-  default: {},
+  default: {s: 1},
   string: ['o', 'i']
 };
 
 function configure(proc) {
   var argv = minimist(proc.argv.slice(2), minimistOptions);
-  var cwd = proc.cwd();
 
   // Set the input file.
   if (!argv.i || argv.i === "") {
@@ -28,6 +27,9 @@ function configure(proc) {
   else {
     settings.outFile = path.isAbsolute(argv.o) ? argv.o : path.resolve(argv.o);
   }
+
+  // Set the document scaling.
+  settings.scale = parseInt(argv.s);
 }
 
 module.exports = configure;
