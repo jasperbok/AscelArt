@@ -1,20 +1,27 @@
 var fs = require('fs');
 var Canvas = require('canvas');
 var settings = require('../config/settings');
+var parser = require('./parser');
 
 var colors = require('./colors');
 
 function Artwork(text) {
-  this.source = text;
-  this.lines = text.split('\n');
+  var parsed = parser(text);
 
-  if (!this.lines[this.lines.length -1]) {
-    this.lines = this.lines.slice(0, this.lines.length - 1);
+  this.source = text;
+  this.lines = parsed.document;
+  this.colors = colors;
+
+  for (var attr in parsed.colors) {
+    if (parsed.colors.hasOwnProperty(attr)) {
+      this.colors[attr] = parsed.colors[attr];
+    }
   }
 
   this.width = this.getWidth();
   this.height = this.getHeight();
   this.scale = settings.scale;
+
   this.canvas = new Canvas(this.width * this.scale, this.height * this.scale);
   this.ctx = this.canvas.getContext('2d');
 }
@@ -40,7 +47,7 @@ Artwork.prototype.draw = function draw() {
     var lineParts = line.replace('\n', '').split('');
 
     lineParts.forEach(function(col, j) {
-      self.ctx.fillStyle = colors.hasOwnProperty(col) ? colors[col] : colors.default;
+      self.ctx.fillStyle = self.colors.hasOwnProperty(col) ? self.colors[col] : self.colors.default;
       self.ctx.fillRect(j * self.scale, i * self.scale, self.scale, self.scale);
     });
 
