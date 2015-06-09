@@ -18,6 +18,7 @@
   "author": "Jasper Bok",
   "license": "MIT",
   "dependencies": {
-    "canvas": "^1.2.3"
+    "canvas": "^1.2.3",
+    "minimist": "^1.1.1"
   }
 }
