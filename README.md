@@ -8,7 +8,15 @@ The name is a lame combination of ASCII and pixel art.
 
 ## Installation
 
-AscelArt requires
+AscelArt makes use of [node-canvas](https://github.com/Automattic/node-canvas)
+which requires **Cairo** to be installed on your system. If you don't have this
+installed yet, or you don't know whether you have it, follow the
+[OS specific instructions](https://github.com/Automattic/node-canvas/wiki/_pages)
+on the node-canvas wiki.
+
+After you have Cairo installed, simply do:
+
+    npm install --global ascelart
 
 
 ## Usage
