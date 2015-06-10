@@ -1,11 +1,11 @@
 {
-  "name": "AscelArt",
-  "version": "0.0.1",
-  "description": "Create pixel art as ASCII text.",
-  "preferGlobal": true,
+  "name": "ascelart",
+  "version": "0.1.0",
+  "description": "A commandline utility that converts plain text to pixel art.",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "preferGlobal": true,
   "bin": {
     "ascelart": "index.js"
   },
