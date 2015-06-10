@@ -1,6 +1,3 @@
-// Matches lines like 'a=#ff0000' which are treated as color settings.
-var regex = /^(.{1})=(#[0-9a-fA-F]{3,6})$/g;
-
 function parse(text) {
   var parts = text.split('\n');
   var colors = {};
@@ -13,6 +10,8 @@ function parse(text) {
   }
 
   parts.forEach(function(p, i) {
+    // Matches lines like 'a=#ff0000' which are treated as color settings.
+    var regex = /^(.{1})=(#[0-9a-fA-F]{3,6})$/g;
     var result = regex.exec(p);
 
     // This is a color configuration line.
